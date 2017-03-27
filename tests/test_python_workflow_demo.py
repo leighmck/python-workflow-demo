@@ -11,7 +11,7 @@ Tests for `python_workflow_demo` module.
 import pytest
 
 
-from python_workflow_demo import python_workflow_demo
+from python_workflow_demo import app
 
 
 @pytest.fixture

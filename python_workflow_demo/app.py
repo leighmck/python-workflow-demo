@@ -15,6 +15,19 @@
 # ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 # OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
-__author__ = """Leigh McKenzie"""
-__email__ = 'maccarav0@gmail.com'
-__version__ = '0.1.0'
+
+
+import asyncio
+
+from python_workflow_demo import mqtt
+from python_workflow_demo import workflow
+
+if __name__ == '__main__':
+    mqtt.connect()
+
+    loop = asyncio.get_event_loop()
+
+    mqtt.run()
+    workflow.run()
+
+    loop.run_forever()

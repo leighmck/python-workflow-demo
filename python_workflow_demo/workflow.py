@@ -15,6 +15,20 @@
 # ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 # OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
-__author__ = """Leigh McKenzie"""
-__email__ = 'maccarav0@gmail.com'
-__version__ = '0.1.0'
+
+import asyncio
+from datetime import datetime
+from python_workflow_demo import mqtt
+
+
+def run():
+    print('publish ' + str(datetime.now()))
+    mqtt.publish('lam/test/datetime', str(datetime.now()), {})
+    asyncio.get_event_loop().call_later(1.0, run)
+
+
+def onTestData(data):
+    print('test data received: ' + str(data))
+
+
+mqtt.subscribe('lam/test/datetime', onTestData)
